@@ -1,9 +1,11 @@
 package edu.sdsmt.puzzle_johnson_na;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,16 @@ public class PuzzleView extends View {
     public PuzzleView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean result = puzzle.onTouchEvent(this, event);
+        if (result) {
+            invalidate();
+        }
+        return result;
     }
 
     private void init(AttributeSet attrs, int defStyle) {
