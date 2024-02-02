@@ -1,51 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
     android:orientation="horizontal"
-    android:padding="20dp"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/grubbyImage"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="7"
-        android:contentDescription="@string/puzzle_description"
-        app:srcCompat="@drawable/grubby" />
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="228dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="text"
-        android:textColorHint="@color/dark_grey" />
-
-    <FrameLayout
-        android:layout_width="232dp"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:contentDescription="@string/puzzle_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/grubby"/>
 
-        <Button
-            android:id="@+id/buttonStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="onStartPuzzle"
-            android:text="@string/start_button_text" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/textWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:text="@string/welcome_to_puzzle_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintWidth_percent="0.5">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="text"
+                android:textColorHint="@color/dark_grey" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onStartPuzzle"
+                android:text="@string/start_button_text" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintWidth_percent="0.5">
+
+            <TextView
+                android:id="@+id/textWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/welcome_to_puzzle_text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
