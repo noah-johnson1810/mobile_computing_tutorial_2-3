@@ -2,8 +2,10 @@
     <string name="app_name">T23JohnsonNA</string>
     <string name="puzzle_description">Puzzle Image</string>
     <string name="start_button_text">Start Puzzle</string>
-    <string name="start_puzzle_name">Name</string>
     <string name="welcome_to_puzzle_text">Welcome to Noah\'s Puzzle</string>
     <string name="name">Name</string>
     <string name="player">Player</string>
+    <string name="hurrah">Hurrah!!!</string>
+    <string name="completed_puzzle">You have completed the puzzle!</string>
+    <string name="shuffle">Shuffle</string>
 </resources>

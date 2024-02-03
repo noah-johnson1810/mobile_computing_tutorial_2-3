@@ -5,7 +5,21 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+import java.util.Random;
+
 public class PuzzlePiece {
+
+    /**
+     * The puzzle piece ID
+     */
+    private final int id;
+
+    /**
+     * We consider a piece to be in the right location if within
+     * this distance.
+     */
+    final static float SNAP_DISTANCE = 0.05f;
+
     /**
      * The image for the actual piece.
      */
@@ -33,10 +47,15 @@ public class PuzzlePiece {
      */
     private final float finalY;
 
+    public int getId() {
+        return id;
+    }
+
     public PuzzlePiece(Context context, int id, float finalX, float finalY)
     {
         this.finalX = finalX;
         this.finalY = finalY;
+        this.id = id;
 
         piece = BitmapFactory.decodeResource(context.getResources(), id);
     }
@@ -94,5 +113,55 @@ public class PuzzlePiece {
     public void move(float dx, float dy) {
         x += dx;
         y += dy;
+    }
+
+    /**
+     * If we are within SNAP_DISTANCE of the correct
+     * answer, snap to the correct answer exactly.
+     * @return true if close enough
+     */
+    public boolean maybeSnap() {
+        if(Math.abs(x - finalX) < SNAP_DISTANCE &&
+                Math.abs(y - finalY) < SNAP_DISTANCE) {
+
+            x = finalX;
+            y = finalY;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine if this piece is snapped in place
+     * @return true if snapped into place
+     */
+    public boolean isSnapped() {
+        return x == finalX && y == finalY;
+    }
+
+    /**
+     * Shuffle the location of this piece
+     * @param rand A random number generator
+     */
+    public void shuffle(Random rand) {
+        x = rand.nextFloat();
+        y = rand.nextFloat();
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
     }
 }
